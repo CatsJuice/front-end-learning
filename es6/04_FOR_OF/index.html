@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+        const fruits = ['Apple', 'Banna', 'Orange', 'Mango'];
+        
+        // es6之前：
+
+        // 1. for循环
+        for (let i=0; i<fruits.length; i++) {
+            console.log(fruits[i]);
+        }
+
+        // 2. forEach
+        fruits.forEach(fruit => {
+            // 无法 contine | break
+            console.log(fruit);
+        })
+
+        // 3. for in
+        for(let index in fruits) {
+            console.log(fruits[index]);
+        }
+
+        // es6
+        for(let fruit of fruits) {
+            if (true) {
+                continue;   // | break
+            }
+            console.log(fruit);
+        }
+
+    </script>
+</body>
+</html>

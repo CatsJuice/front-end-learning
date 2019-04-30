@@ -56,4 +56,3 @@ $('#target').append(`
     are on sale!
 `)
 ```
-
