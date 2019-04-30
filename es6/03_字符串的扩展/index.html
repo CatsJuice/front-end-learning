@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .highlight{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="add-comment">
+            <textarea class="comment-text" cols="30" rows="10"></textarea>
+            <input type="submit" value="提交">
+        </form>
+        <div class="comment">
+            
+        </div>
+    </div>
+
+    <script>
+            const Jelly = {
+                name: 'Jelly',
+                date: '2019-04-30',
+                todos: [
+                    {name: 'Go to Store', completed: false },
+                    {name: 'Watch Movie', completed: true },
+                    {name: 'Running', completed: false },
+                ]
+            }
+    
+            function todoRender(todos) {
+              return `
+                <ul>
+                  ${todos.map(todo => `
+                      <li>
+                        ${todo.name} ${todo.completed? '√' : '×'}
+                      </li>
+                  `).join('')}
+                </ul>
+              `
+              
+            }
+            const templete = `
+                <div class='panel'>
+                    <div class='panel-header'>${Jelly.name}</div>
+                    <div class='panel-body'>
+                      ${todoRender(Jelly.todos)}
+                    </div>
+                    <div class='pannel-footer'>${Jelly.date}</div>
+                </div>
+            `
+            
+            document.body.innerHTML += templete;
+    
+    
+            // Tagged Template Strings
+            // 标签模板字符串
+            function highlight(strings, ...values) {    
+                // debugger;
+                console.log(strings);   // strings是被参数分割的字符串数组，如果参数在头部或尾部， 则会分割出空串
+                console.log(values);    // values: 剩余参数的数组
+                var highlighted = values.map(value => `<span class='highlight'>${value}</span>`)
+                let str = '';
+                strings.forEach((string, i) => {
+                    str += `${string}${highlighted[i] || ''}`
+                });
+                return str;
+            } 
+            const user = 'Mary';
+            const topic = 'Learn to user Markdown';
+            const sentence = highlight`${user} has commented on your topic ${topic}`;
+            document.body.innerHTML += sentence;
+    
+            // 2;
+            const addCommentForm = document.querySelector('.add-comment');
+            const textarea = document.querySelector('.comment-text');
+            const commentDiv = document.querySelector('.comment');
+            // const user = 'Mary';
+    
+            addCommentForm.addEventListener('submit', function(event){
+                event.preventDefault();
+                const newComment = textarea.value.trim();
+                if (newComment) {
+                    commentDiv.innerHTML = `
+                    <div class='comment-header'>${user}</div>
+                    <div class="comment-body">${textarea.value}</div>
+                    `
+                    textarea.value = '';
+                }
+            })
+        </script>
+</body>
+</html>
