@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *{
+            transition: all 0.2s ease;
+        }
+        .row{
+            margin: 0;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            margin-top: 50px;
+        }
+        #test-rotate, #test-translate, #test-scale, #test-skew{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+        .rotate{
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+        }
+        .translate{
+            transform: translate(100px, 0px);
+            -webkit-transform: translate(100px, 0px);
+            -o-transform: translate(100px, 0px);
+            -moz-transform: translate(100px, 0px);
+            -ms-transform: translate(100px, 0px);
+        }
+        .scale{
+            transform: scale(1.5,1.5);
+            -webkit-transform: scale(1.5,1.5);
+            -o-transform: scale(1.5,1.5);
+            -moz-transform: scale(1.5,1.5);
+            -ms-transform: scale(1.5,1.5);
+        }
+        .skew{
+            transform: skew(30deg, -30deg);
+            -webkit-transform: skew(30deg, -30deg);
+            -o-transform: skew(30deg, -30deg);
+            -moz-transform: skew(30deg, -30deg);
+            -ms-transform: skew(30deg, -30deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Test rotate -->
+    <div class="row">
+        <div id="test-rotate">
+
+        </div>
+
+        <button id='add-rotate-btn'>旋转</button>
+
+    </div>
+
+    <!-- Test translate -->
+    <div class="row">
+        <div id="test-translate">
+
+        </div>
+
+        <button id='add-translate-btn'>移动</button>
+
+    </div>
+
+    <!-- Test scale -->
+    <div class="row">
+        <div id="test-scale">
+
+        </div>
+
+        <button id='add-scale-btn'>放大</button>
+
+    </div>
+
+    <!-- Test skew -->
+    <div class="row">
+        <div id="test-skew">
+
+        </div>
+
+        <button id='add-skew-btn'>翻转</button>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            var rotate = true
+            document.getElementById('add-rotate-btn').onclick = function() {
+                if (rotate){
+                    document.getElementById('add-rotate-btn').innerText = "取消移动"
+                    document.querySelector('#test-rotate').classList.add('rotate')
+                    rotate = false
+                } else {
+                    document.getElementById('add-rotate-btn').innerText = "移动"
+                    document.querySelector('#test-rotate').classList.remove('rotate')
+                    rotate = true
+                }
+            }
+
+            var translate = true
+            document.getElementById('add-translate-btn').onclick = function() {
+                if (translate){
+                    document.getElementById('add-translate-btn').innerText = "取消旋转"
+                    document.querySelector('#test-translate').classList.add('translate')
+                    translate = false
+                } else {
+                    document.getElementById('add-translate-btn').innerText = "旋转"
+                    document.querySelector('#test-translate').classList.remove('translate')
+                    translate = true
+                }
+            }
+
+            var scale = true
+            document.getElementById('add-scale-btn').onclick = function() {
+                if (scale){
+                    document.getElementById('add-scale-btn').innerText = "取消放大"
+                    document.querySelector('#test-scale').classList.add('scale')
+                    scale = false
+                } else {
+                    document.getElementById('add-scale-btn').innerText = "放大"
+                    document.querySelector('#test-scale').classList.remove('scale')
+                    scale = true
+                }
+            }
+            
+            var skew = true
+            document.getElementById('add-skew-btn').onclick = function() {
+                if (skew){
+                    document.getElementById('add-skew-btn').innerText = "取消翻转"
+                    document.querySelector('#test-skew').classList.add('skew')
+                    skew = false
+                } else {
+                    document.getElementById('add-skew-btn').innerText = "翻转"
+                    document.querySelector('#test-skew').classList.remove('skew')
+                    skew = true
+                }
+            }
+        }
+    </script>
+</body>
+</html>
