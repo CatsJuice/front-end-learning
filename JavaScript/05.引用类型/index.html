@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr =[]
+        for (let i=0; i<10; i++){
+            arr.push(i)
+        }
+        console.log(arr)
+
+        everyRes = arr.every(function(item, index, arr) {
+            // console.log(item);
+            return item < 5;
+        });
+        console.log("everyRes:" + everyRes);
+
+        filterRes = arr.filter(function(item, index, arr) {
+            return item < 5
+        });
+        console.log("filterRes:" + filterRes);
+        
+        foreachRes = arr.forEach(function(item, index, arr) {
+            item++;              // 不会改变原数组
+            // arr[index] += 1;        // 会改变原数组
+        })
+        console.log("foreachRes:" + foreachRes);
+        console.log("arr:" + arr);
+        
+
+        mapRes = arr.map(function(item, index, arr) {
+            return item > 5;
+        })
+        console.log("mapRes:" + mapRes);
+
+        
+    </script>
+</body>
+</html>
